@@ -1,0 +1,14 @@
+.post-ad-form {
+  padding: 3rem 0;
+}
+
+.image-preview-container img {
+  border: 1px solid #ddd;
+  padding: 2px;
+  max-height: 120px;
+  border-radius: 0.25rem;
+}
+
+.image-preview-container .row {
+  gap: 0.5rem;
+}

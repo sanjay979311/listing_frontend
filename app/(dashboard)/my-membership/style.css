@@ -1,0 +1,29 @@
+/* Membership Component Styling */
+.membership-card {
+  border-radius: 1rem;
+}
+
+.membership-header {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.progress-custom {
+  height: 8px;
+  border-radius: 5px;
+}
+
+.progress-bar {
+  transition: width 0.5s ease;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card .card-header h4,
+.card .card-header h5,
+.card .card-header h6 {
+  font-weight: 600;
+}

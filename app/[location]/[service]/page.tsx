@@ -1,112 +1,9 @@
 
-// import { Container, Row, Col, Card } from "react-bootstrap";
-// import Image from "next/image";
-// import { notFound } from "next/navigation";
-
-// export default function ServicePage({ params }) {
-//   const location = decodeURIComponent(
-//     Array.isArray(params.location) ? params.location[0] : params.location
-//   );
-//   const service = decodeURIComponent(
-//     Array.isArray(params.service) ? params.service[0] : params.service
-//   );
-//   const serviceTitle = service?.replace(/-/g, " ") || "";
-
-//   if (!location || !service) return notFound();
-
-//   const listingsCount = "3432+";
-//   const topServices = [
-//     { name: "SecurePro Guards", description: "24/7 Security Services", rating: 4.5 },
-//     { name: "SafeWatch Security", description: "Corporate & Residential Guards", rating: 4.3 },
-//     { name: "Guardian Security", description: "Experienced Security Professionals", rating: 4.7 },
-//   ];
-
-//   return (
-//     <div className="bg-light min-vh-100">
-//       <header className="bg-white shadow-sm sticky-top py-3">
-//         <Container className="d-flex justify-content-between align-items-center">
-//           <h1 className="text-primary fw-bold m-0">FindServices</h1>
-//         </Container>
-//       </header>
-
-//       <Container className="py-5 text-center">
-//         <h2 className="fw-bold display-6">{serviceTitle} in {location}</h2>
-//         <p className="text-muted fs-5">{serviceTitle} Services in {location}</p>
-//         <p className="text-primary fw-semibold">{listingsCount} Listings</p>
-//         <p className="text-muted">Trusted service providers for {serviceTitle} in {location}</p>
-//       </Container>
-
-//       <Container className="py-5">
-//         <h3 className="fw-semibold mb-4">Top Service Providers</h3>
-//         <Row className="g-4">
-//           {topServices.map((item, idx) => (
-//             <Col key={idx} md={12}>
-//               <Card className="shadow-sm border-0 p-3 d-flex flex-row align-items-center gap-3 hover-shadow">
-//                 <Image src="/placeholder.svg" alt={`${item.name} logo`} width={80} height={80} className="rounded" />
-//                 <div>
-//                   <h5 className="fw-bold m-0">{item.name}</h5>
-//                   <p className="text-muted mb-1 small">{item.description}</p>
-//                   <p className="text-primary fw-semibold small m-0">Rating: {item.rating}★</p>
-//                 </div>
-//               </Card>
-//             </Col>
-//           ))}
-//         </Row>
-//       </Container>
-
-//       <footer className="bg-white border-top py-4 text-center text-muted">
-//         © {new Date().getFullYear()} FindServices — Inspired by Justdial UI
-//       </footer>
-//     </div>
-//   );
-// }
 
 
-
-// "use client";
-
-// import { useParams } from "next/navigation";
-
-// export default function ClientPage() {
-//   const params = useParams();
-
-//   console.log("Client Params: ", params);
-
-//   return (
-//     <div>
-//       <h1>{params.location}</h1>
-//       <h2>{params.service}</h2>
-//     </div>
-//   );
-// }
-
-
-// export async function generateMetadata({ params }) {
-//   const { slug } = params;
-
-//   // Fetch SEO metadata dynamically from API
-//   let response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/lms/frontend/course/course-seo/${slug}`, {
-//     cache: 'no-store',
-//   });
-
-// export async function generateMetadata({ params }) {
-//   return {
-//     title: `${params?.service} in ${params?.location} | FindServices`,
-//     description: `Find top ${params?.service} services in ${params?.location}. Browse verified listings, ratings, and trusted providers.`,
-//   };
-// }
-
-// export default function ServicePage({ params }) {
-//   console.log("params is =======>",params)
-//   return (
-//     <div>
-//       <h1>{params?.location}</h1>
-//       <h2>{params?.service}</h2>
-//     </div>
-//   );
-// }
-
-
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer';
+import Link from 'next/link';
 
 interface PageProps {
   params: {
@@ -115,121 +12,183 @@ interface PageProps {
   };
 }
 
-// export async function generateMetadata({ params }: PageProps) {
-//  const { location, service } = await params;
-
-//   const formattedService = service
-//     .replace(/---/g, " ")
-//     .replace(/-/g, " ")
-//     .replace(/\s+/g, " ")
-//     .trim();
-
-//   const formattedLocation = location
-//     .replace(/-/g, " ")
-//     .trim();
-
-//   const title = `Top ${formattedService} in ${formattedLocation} - Best ${formattedService} near me - Justdial`;
-
-//   const description = `${formattedService} in ${formattedLocation} - Ensure your business stays cool with top-notch AC repairs and services. Beat the heat with quick, reliable solutions that minimize downtime. From installation to emergency repairs, find expert technicians to keep your workplace comfortable. Get your free quote today!`;
-
-//   const keywords = `List of ${formattedService} in ${formattedLocation}, Reviews, Map, Address, Phone Number, Contact Number, local, popular ${formattedService}, ${formattedService}`;
-
-//   return {
-//     title: title,
-//     description: description,
-
-//     // Extra Justdial-type meta tags
-//     other: {
-//       "theme-color": "#fff",
-//       "Title": title,
-//       "keywords": keywords,
-
-//       // Twitter Cards
-//       "twitter:title": title,
-//       "twitter:description": description,
-//       "twitter:image": "https://akam.cdn.jdmagicbox.com/images/icontent/jd-logo_nw.png",
-//       "twitter:card": "summary_large_image",
-//     },
-
-//     // DNS Prefetch & Preconnect
-//     icons: {
-//       icon: "https://akam.cdn.jdmagicbox.com/images/icontent/jd-logo_nw.png",
-//     },
-
-//     alternates: {
-//       canonical: `/${location}/${service}`,
-//     },
-
-//     // Preconnect Links
-//     otherLinks: [
-//       { rel: "dns-prefetch", href: "//akam.cdn.jdmagicbox.com" },
-//       { rel: "dns-prefetch", href: "//content.jdmagicbox.com" },
-//       { rel: "preconnect", href: "//content.jdmagicbox.com" },
-//       { rel: "preconnect", href: "https://fonts.googleapis.com" },
-//       { rel: "preconnect", href: "https://fonts.gstatic.com" },
-//     ],
-//   };
-// }
-
-// const ServicePage = async ({ params }: PageProps) => {
-//   const { location, service } = await params;
-
-//   console.log("data is ==========>", params);
-
-//   return (
-//     <>
-//       <h1>City: {location}</h1>
-//       <h2>Service: {service}</h2>
-//     </>
-//   );
-// };
-
-// export default ServicePage;
-
-
+/* ----------------------------------------------
+   Dynamic Metadata (SEO Optimized)
+---------------------------------------------- */
 export async function generateMetadata({ params }: PageProps) {
   const { location, service } = await params;
 
   const formattedService = service.replace(/---/g, " ").replace(/-/g, " ");
   const formattedLocation = location.replace(/-/g, " ");
 
-  const title = `Top ${formattedService} in ${formattedLocation} - Best ${formattedService} near me - Justdial`;
-
-  const description = `${formattedService} in ${formattedLocation} - Ensure your business stays cool with top-notch AC repairs and services. Beat the heat with quick, reliable solutions that minimize downtime. From installation to emergency repairs, find expert technicians.`;
-
-  const keywords = `List of ${formattedService} in ${formattedLocation}, Reviews, Map, Address, Phone Number, Contact Number, popular ${formattedService}`;
-
   return {
-    title,
-    description,
-    keywords,
-    openGraph: {
-      title,
-      description,
-      url: `/${location}/${service}`,
-      images: [
-        "https://akam.cdn.jdmagicbox.com/images/icontent/jd-logo_nw.png"
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: ["https://akam.cdn.jdmagicbox.com/images/icontent/jd-logo_nw.png"],
-    },
+    title: `Top ${formattedService} in ${formattedLocation} - Best ${formattedService} Near You | Justdial`,
+    description: `${formattedService} in ${formattedLocation} - Discover reliable, fast, and professional services. Find trusted technicians offering quality service with minimal downtime.`,
+    keywords: `List of ${formattedService} in ${formattedLocation}, Reviews, Address, Phone Number, Popular ${formattedService}`,
   };
 }
 
-
+/* ----------------------------------------------
+   SERVICE LIST PAGE
+---------------------------------------------- */
 const ServicePage = async ({ params }: PageProps) => {
   const { location, service } = await params;
 
-  console.log("data is ==========>", params);
+  const formattedLocation = location.replace(/-/g, " ");
+  const formattedService = service.replace(/-/g, " ");
+
+  // Sample data for listings
+  const listings = [
+    {
+      name: "Air-Coolex",
+      address: "Opposite Taltala Sitala Mondir, Taltala, Kolkata",
+      rating: 4.6,
+      reviews: 10,
+      phone: "09008511066",
+      yearsInBusiness: 30,
+      comment: '"Reasonably priced"',
+      suggestions: 4,
+      amenities: ["AC Repair & Services", "Electrical Goods Repair & Services"],
+      images: [
+        "https://content.jdmagicbox.com/comp/service_catalogue/chiller-amc-repairs-and-services-033pxx33.xx33.210716170812.q8a5-a5r7wnj-250.jpg?w=640&q=75",
+        "https://content.jdmagicbox.com/comp/kolkata/a5/033pxx33.xx33.210716170812.q8a5/catalogue/air-coolex-taltala-kolkata-ac-repair-and-services-bwev9p2vrq-250.jpg?w=640&q=75",
+        "https://content.jdmagicbox.com/v2/comp/kolkata/a5/033pxx33.xx33.210716170812.q8a5/catalogue/air-coolex-taltala-kolkata-ac-repair-and-services-hsj2dqz1x7-250.jpg?w=640&q=75",
+      ],
+    },
+    // Add more listings here if needed
+  ];
 
   return (
     <>
-      <h1>City: {location}</h1>
-      <h2>Service: {service}</h2>
+      <Header />
+
+      {/* Breadcrumb */}
+      {/* <nav aria-label="breadcrumb" className="bg-light border-bottom py-2">
+        <div className="container">
+          <ol className="breadcrumb mb-0">
+            <li className="breadcrumb-item">
+              <a href={`/${location}`} className="text-decoration-none text-dark">
+                {formattedLocation}
+              </a>
+            </li>
+            <li className="breadcrumb-item">
+              <a href={`/${location}/${service}`} className="text-decoration-none text-dark">
+                {formattedService} in {formattedLocation}
+              </a>
+            </li>
+            <li className="breadcrumb-item">
+              <a href={`/${location}/${service}-commercial`} className="text-decoration-none text-dark">
+                {formattedService} for Commercial in {formattedLocation}
+              </a>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              <a href={`/${location}/${service}?#listings`} className="text-decoration-none text-dark">
+                {listings.length}+ Listings
+              </a>
+            </li>
+          </ol>
+        </div>
+      </nav> */}
+      <nav aria-label="breadcrumb" className="bg-light border-bottom py-2">
+  <div className="container">
+    <ol className="breadcrumb mb-0">
+      {/* City */}
+      <li className="breadcrumb-item">
+        <Link href={`/${location}`} className="text-decoration-none text-dark">
+          {formattedLocation}
+        </Link>
+      </li>
+
+      {/* Category */}
+      <li className="breadcrumb-item">
+        <Link href={`/${location}/${service}`} className="text-decoration-none text-dark">
+          {formattedService} in {formattedLocation}
+        </Link>
+      </li>
+
+      {/* Subcategory */}
+      <li className="breadcrumb-item">
+        <Link href={`/${location}/${service}-commercial`} className="text-decoration-none text-dark">
+          {formattedService} for Commercial in {formattedLocation}
+        </Link>
+      </li>
+
+      {/* Listings count */}
+      <li className="breadcrumb-item active" aria-current="page">
+        <Link href={`/${location}/${service}?#listings`} className="text-decoration-none text-dark">
+          {listings.length}+ Listings
+        </Link>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+
+      {/* Header Section */}
+      <section className="bg-white border-bottom py-3">
+        <div className="container">
+          <h1 className="h4 text-capitalize fw-bold mb-1">
+            {formattedService} in {formattedLocation}
+          </h1>
+          <p className="text-muted mb-0">Showing {listings.length}+ verified listings</p>
+        </div>
+      </section>
+
+      {/* Listings */}
+      <div className="container my-4">
+        <div className="row g-4">
+          <section className="col-lg-9 col-md-8" id="listings">
+            {listings.map((item, idx) => (
+              <div key={idx} className="card border-0 shadow-sm mb-4 p-3">
+                <div className="d-flex justify-content-between">
+                  {/* Info */}
+                  <div style={{ flex: 1 }}>
+                    <h5 className="fw-bold text-capitalize mb-2">{item.name}</h5>
+
+                    {/* Rating */}
+                    <div className="d-flex align-items-center mb-2">
+                      <span className="badge bg-success px-3 py-2 fs-6">{item.rating} ★</span>
+                      <small className="text-muted ms-2">({item.reviews} Ratings)</small>
+                    </div>
+
+                    {/* Address & Phone */}
+                    <p className="text-muted mb-1">{item.address}</p>
+                    <p className="fw-semibold mb-2">📞 {item.phone}</p>
+
+                    {/* Amenities */}
+                    <div>
+                      {item.amenities.map((amenity, i) => (
+                        <span key={i} className="badge text-bg-light border me-2">{amenity}</span>
+                      ))}
+                    </div>
+
+                    {/* Years in business & comment */}
+                    <div className="mt-2">
+                      <span className="me-3">{item.yearsInBusiness} Years in Business</span>
+                      <span>{item.comment} ({item.suggestions} Suggestions)</span>
+                    </div>
+
+                    {/* Image Carousel */}
+                    <div className="d-flex mt-2 overflow-auto" style={{ gap: "5px" }}>
+                      {item.images.map((img, i) => (
+                        <img key={i} src={img} alt={`${item.name} image ${i + 1}`} style={{ width: "100px", height: "100px", objectFit: "cover", borderRadius: "5px" }} />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="text-end ms-3" style={{ minWidth: "120px" }}>
+                    <button className="btn btn-primary btn-sm w-100 mb-2">Call Now</button>
+                    <button className="btn btn-outline-secondary btn-sm w-100">Get Best Price</button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </section>
+        </div>
+      </div>
+
+      <Footer />
     </>
   );
 };

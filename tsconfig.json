@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "app/[location]/[service]/page.tsx"  ],
+, "app/[location]/[service]/page.tsx", "components/search/useDebounce.jsx", "components/search/useSuggestions.jsx", "components/ProtectedRoute.jsx", "middlewareee.ts"  ],
   "exclude": ["node_modules"]
 }
